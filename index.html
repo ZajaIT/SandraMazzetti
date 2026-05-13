@@ -806,6 +806,14 @@ margin:20px auto 0;
 max-width:500px;
 }
 
+  .menu-toggle{
+display:none;
+}
+
+.mobile-menu{
+display:none;
+}
+
 @media(max-width:991px){
 .hero,
 .about,
@@ -844,6 +852,7 @@ direction:ltr;
 font-size:2rem;
 }
 }
+  
 
 @media(max-width:768px){
 
@@ -860,6 +869,7 @@ padding:60px 20px;
 .navbar{
 top:0;
 width:100%;
+height:72px;
 padding:14px 16px;
 border-radius:0;
 left:0;
@@ -872,8 +882,9 @@ font-size:.9rem;
 }
 
 .logo img{
-width:42px;
+width:52px;
 }
+  
 
 .nav-right{
 gap:12px;
@@ -884,11 +895,65 @@ display:none;
 }
 
 .nav-extra{
-gap:10px;
+margin-left:auto;
+gap:12px;
 }
 
 .nav-extra a{
 font-size:.8rem;
+}
+
+  .nav-extra a:not(.nav-phone){
+display:none;
+}
+  
+  .nav-phone{
+background:#ff4aa0;
+color:white !important;
+padding:10px 18px;
+border-radius:999px;
+font-size:.85rem;
+}
+
+  .menu-toggle{
+display:flex;
+width:46px;
+height:46px;
+border:none;
+border-radius:50%;
+background:#ffe5f2;
+color:#ff4aa0;
+font-size:1.1rem;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.mobile-menu{
+position:fixed;
+top:72px;
+left:0;
+width:100%;
+background:white;
+padding:28px 24px;
+display:flex;
+flex-direction:column;
+gap:22px;
+z-index:998;
+transform:translateY(-120%);
+transition:.35s;
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+.mobile-menu.active{
+transform:translateY(0);
+}
+
+.mobile-menu a{
+text-decoration:none;
+font-size:1.1rem;
+font-weight:700;
+color:#333;
 }
 
 /* HERO */
@@ -1116,6 +1181,10 @@ display:none;
 <div class="nav-extra">
 <a href="tel:+420773945917" class="nav-phone">+420 773 945 917</a>
 
+ <button class="menu-toggle" onclick="toggleMenu()">
+<i class="fa-solid fa-bars"></i>
+</button> 
+
 <a href="https://www.facebook.com/cukrarstvi.mazzetti0/" target="_blank">
 <i class="fa-brands fa-facebook-f"></i>
 </a>
@@ -1127,6 +1196,16 @@ display:none;
 
 </div>
 </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+
+<a href="#home" onclick="closeMenu()">Domů</a>
+<a href="#about" onclick="closeMenu()">O mně</a>
+<a href="#gallery" onclick="closeMenu()">Nabídka</a>
+<a href="#reviews" onclick="closeMenu()">Recenze</a>
+<a href="#contact" onclick="closeMenu()">Kontakt</a>
+
+</div>
 
 <section class="hero" id="home">
 <div class="hero-content">
@@ -1563,6 +1642,14 @@ element.classList.add('active');
 window.addEventListener('scroll', revealOnScroll);
 
 revealOnScroll();
+
+  function toggleMenu(){
+document.getElementById('mobileMenu').classList.toggle('active');
+}
+
+function closeMenu(){
+document.getElementById('mobileMenu').classList.remove('active');
+}
 </script>
 
 </body>
