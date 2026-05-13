@@ -1695,11 +1695,21 @@ window.addEventListener('scroll', revealOnScroll);
 
 revealOnScroll();
 
-  function toggleMenu(){
+function toggleMenu(){
 
-document.getElementById('mobileMenu').classList.toggle('active');
+const menu = document.getElementById('mobileMenu');
+
+menu.classList.toggle('active');
 
 document.querySelector('.menu-toggle').classList.toggle('active');
+
+if(menu.classList.contains('active')){
+document.body.style.overflow='hidden';
+}
+
+else{
+document.body.style.overflow='auto';
+}
 }
 
 function closeMenu(){
@@ -1707,6 +1717,8 @@ function closeMenu(){
 document.getElementById('mobileMenu').classList.remove('active');
 
 document.querySelector('.menu-toggle').classList.remove('active');
+
+document.body.style.overflow='auto';
 }
 </script>
 
