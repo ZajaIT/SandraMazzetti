@@ -981,6 +981,8 @@ position:fixed;
 top:72px;
 left:0;
 width:100%;
+height:100vh;
+overflow-y:auto;
 background:white;
 padding:28px 24px;
 display:flex;
@@ -1704,11 +1706,17 @@ menu.classList.toggle('active');
 document.querySelector('.menu-toggle').classList.toggle('active');
 
 if(menu.classList.contains('active')){
+
 document.body.style.overflow='hidden';
+document.documentElement.style.overflow='hidden';
+
 }
 
 else{
+
 document.body.style.overflow='auto';
+document.documentElement.style.overflow='auto';
+
 }
 }
 
@@ -1719,6 +1727,7 @@ document.getElementById('mobileMenu').classList.remove('active');
 document.querySelector('.menu-toggle').classList.remove('active');
 
 document.body.style.overflow='auto';
+document.documentElement.style.overflow='auto';
 }
 </script>
 
