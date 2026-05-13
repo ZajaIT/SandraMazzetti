@@ -935,7 +935,7 @@ cursor:pointer;
 
 .menu-toggle span{
 display:block;
-height:2px;
+height:3px;
 background:#ff4aa0;
 border-radius:999px;
 transition:.3s;
@@ -955,6 +955,25 @@ width:14px;
 
 .menu-toggle span:nth-child(4){
 width:26px;
+}
+  .menu-toggle.active span:nth-child(1){
+opacity:0;
+transform:translateX(10px);
+}
+
+.menu-toggle.active span:nth-child(4){
+opacity:0;
+transform:translateX(10px);
+}
+
+.menu-toggle.active span:nth-child(2){
+width:28px;
+transform:rotate(45deg) translate(5px,5px);
+}
+
+.menu-toggle.active span:nth-child(3){
+width:28px;
+transform:rotate(-45deg) translate(5px,-5px);
 }
 
 .mobile-menu{
@@ -1677,11 +1696,17 @@ window.addEventListener('scroll', revealOnScroll);
 revealOnScroll();
 
   function toggleMenu(){
+
 document.getElementById('mobileMenu').classList.toggle('active');
+
+document.querySelector('.menu-toggle').classList.toggle('active');
 }
 
 function closeMenu(){
+
 document.getElementById('mobileMenu').classList.remove('active');
+
+document.querySelector('.menu-toggle').classList.remove('active');
 }
 </script>
 
