@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cukrářství Mazzetti</title>
+
+<link rel="icon" type="image/jpeg" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#fffdfc;
+color:#3f3f3f;
+overflow-x:hidden;
+line-height:1.7;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+section{
+padding:70px 7%;
+position:relative;
+scroll-margin-top:60px;
+}
+
+h1,h2,h3{
+font-family:'Playfair Display',serif;
+}
+
+.floating-shape{
+position:absolute;
+filter:blur(40px);
+opacity:.4;
+z-index:-1;
+}
+
+.shape1{
+width:580px;
+height:500px;
+background:#ff84bf;
+border-radius:57% 43% 31% 69% / 57% 47% 53% 43%;
+top:-120px;
+left:-100px;
+}
+
+.shape2{
+width:320px;
+height:320px;
+background:#7fd3ff;
+border-radius:62% 38% 52% 48% / 40% 50% 50% 60%;
+bottom:-100px;
+right:-100px;
+}
+
+
+.navbar{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:1250px;
+padding:14px 28px;
+background:rgba(255,255,255,0.72);
+backdrop-filter:blur(16px);
+border:1px solid rgba(255,255,255,.4);
+border-radius:999px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:999;
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:14px;
+font-family:'Baloo 2',sans-serif;
+font-weight:700;
+font-size:1.1rem;
+color:#ff4aa0;
+text-decoration:none;
+}
+
+.logo img{
+width:58px;
+}
+
+.nav-links{
+display:flex;
+gap:28px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#444;
+font-weight:600;
+position:relative;
+}
+
+.nav-links a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:2px;
+background:#ff4aa0;
+transition:.3s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+.nav-extra{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.nav-extra a{
+text-decoration:none;
+font-size:.9rem;
+font-weight:700;
+color:#ff4aa0;
+transition:.3s;
+}
+
+.nav-extra a:hover{
+transform:translateY(-2px);
+opacity:.7;
+}
+
+.nav-phone{
+color:#ff4aa0 !important;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:80px;
+padding-top:170px;
+}
+
+.hero-content{
+flex:1;
+}
+
+.hero-content span{
+display:inline-block;
+padding:10px 20px;
+border-radius:999px;
+background:#ffe5f2;
+color:#ff4aa0;
+font-weight:600;
+margin-bottom:24px;
+font-size:.95rem;
+}
+
+.hero-content h1{
+font-size:5.2rem;
+line-height:1;
+margin-bottom:28px;
+color:#1f1f1f;
+}
+
+.hero-content p{
+font-size:1.15rem;
+max-width:620px;
+margin-bottom:38px;
+}
+
+.hero-buttons{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 32px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+transition:.35s;
+}
+
+.btn-primary{
+background:#ff4aa0;
+color:white;
+box-shadow:0 15px 30px rgba(255,74,160,.25);
+}
+
+.btn-primary:hover{
+transform:translateY(-4px);
+}
+
+.submit-btn{
+width:100%;
+border:none;
+cursor:pointer;
+font-size:1rem;
+font-family:inherit;
+}
+
+.btn-secondary{
+background:#bfe9ff;
+color:#2b6e91;
+box-shadow:0 15px 30px rgba(43,110,145,.18);
+}
+
+.btn-secondary:hover{
+transform:translateY(-4px);
+}
+
+.hero-image{
+flex:1;
+position:relative;
+}
+
+.hero-image img{
+width:100%;
+border-radius:42px;
+box-shadow:0 30px 80px rgba(0,0,0,.15);
+transform:rotate(-3deg);
+}
+
+.floating-photo{
+position:absolute;
+width:180px;
+background:transparent;
+box-shadow:none;
+padding:0;
+border-radius:0;
+}
+
+.floating-photo img{
+background:transparent !important;
+box-shadow:none !important;
+border:none !important;
+}
+
+.float1{
+top:-40px;
+right:-30px;
+transform:rotate(10deg);
+}
+
+.float2{
+bottom:-30px;
+left:-90px;
+transform:rotate(-8deg);
+}
+
+@keyframes float{
+0%,100%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.04);
+}
+}
+
+.section-title{
+text-align:center;
+margin-bottom:80px;
+}
+
+.section-title span{
+color:#ff4aa0;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+font-size:.85rem;
+}
+
+.section-title h2{
+font-size:3.4rem;
+margin-top:14px;
+color:#222;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.about-image{
+position:relative;
+}
+
+.about-image img{
+border-radius:40px;
+box-shadow:0 20px 60px rgba(0,0,0,.14);
+max-width:85%;
+margin:auto;
+}
+
+.about-card{
+background:white;
+padding:55px;
+border-radius:45px;
+box-shadow:0 20px 50px rgba(0,0,0,.07);
+position:relative;
+overflow:hidden;
+}
+
+.about-card::before{
+content:'';
+position:absolute;
+width:220px;
+height:220px;
+background:#ffe8f3;
+border-radius:50%;
+top:-120px;
+right:-80px;
+}
+
+.about-card h3{
+font-size:2.5rem;
+margin-bottom:25px;
+position:relative;
+}
+
+.offer-modern{
+display:flex;
+flex-direction:column;
+gap:90px;
+margin-top:40px;
+}
+
+
+.offer-row{
+max-width:1000px;
+margin:auto;
+}
+
+.offer-image img{
+width:100%;
+border-radius:40px;
+box-shadow:0 20px 60px rgba(0,0,0,.14);
+}
+
+.offer-text h3{
+font-size:2.5rem;
+margin-bottom:20px;
+color:#222;
+}
+
+.offer-text{
+text-align:center;
+}
+
+.offer-text p{
+font-size:1.05rem;
+max-width:700px;
+margin:auto;
+}
+
+.service-gallery{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-top:35px;
+}
+
+.service-gallery img{
+width:100%;
+height:240px;
+object-fit:cover;
+border-radius:28px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+transition:.4s;
+cursor:pointer;
+}
+
+.service-gallery img:hover{
+transform:translateY(-6px);
+}
+
+.gallery-showcase{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+.gallery-category{
+position:relative;
+height:500px;
+border-radius:45px;
+overflow:hidden;
+cursor:pointer;
+}
+
+.gallery-category img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:1s;
+}
+
+.gallery-category:hover img{
+transform:scale(1.08);
+}
+
+.gallery-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.05));
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:40px;
+color:white;
+}
+
+.gallery-overlay h3{
+font-size:2.4rem;
+margin-bottom:10px;
+}
+
+.gallery-note{
+margin-top:10px;
+text-align:center;
+font-size:.95rem;
+font-weight:600;
+color:#ff4aa0;
+letter-spacing:.5px;
+}
+
+.emotion-section{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+align-items:center;
+}
+
+.emotion-image{
+position:relative;
+}
+
+.emotion-image img{
+border-radius:40px;
+}
+
+.emotion-slider{
+position:relative;
+width:100%;
+}
+
+.slider-track{
+position:relative;
+overflow:hidden;
+border-radius:40px;
+}
+
+.slide{
+display:none;
+width:100%;
+border-radius:40px;
+}
+
+.slide.active{
+display:block;
+animation:fade .4s ease;
+}
+
+@keyframes fade{
+from{
+opacity:.4;
+transform:scale(.98);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.slider-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:52px;
+height:52px;
+border:none;
+border-radius:50%;
+background:rgba(255,255,255,.85);
+backdrop-filter:blur(10px);
+cursor:pointer;
+font-size:1.4rem;
+z-index:5;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+transition:.3s;
+}
+
+.slider-btn:hover{
+transform:translateY(-50%) scale(1.08);
+}
+
+.prev{
+left:18px;
+}
+
+.next{
+right:18px;
+}
+
+.review-card{
+background:white;
+padding:35px;
+border-radius:35px;
+box-shadow:0 15px 40px rgba(0,0,0,.07);
+margin-bottom:20px;
+transform:rotate(-1deg);
+}
+
+.review-card:nth-child(2){
+transform:rotate(2deg);
+}
+
+.review-card h4{
+margin-bottom:10px;
+color:#ff4aa0;
+}
+
+.contact-wrapper{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:start;
+}
+
+.contact-info{
+background:white;
+padding:50px;
+border-radius:45px;
+box-shadow:0 20px 50px rgba(0,0,0,.07);
+}
+
+.contact-item{
+margin-bottom:28px;
+}
+
+.contact-item h4{
+margin-bottom:8px;
+color:#ff4aa0;
+}
+
+.contact-item a{
+color:#3f3f3f;
+text-decoration:none;
+transition:.3s;
+}
+
+.contact-item a:hover{
+color:#ff4aa0;
+}
+
+.contact-form{
+background:#fff;
+padding:50px;
+border-radius:45px;
+box-shadow:0 20px 50px rgba(0,0,0,.07);
+}
+
+.contact-form h4{
+margin-bottom:20px;
+color:#ff4aa0;
+font-size:1rem;
+font-weight:700;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:18px;
+margin-bottom:18px;
+border:none;
+background:#f8f8f8;
+border-radius:22px;
+font-family:inherit;
+}
+
+.contact-form textarea{
+min-height:150px;
+resize:none;
+}
+
+.footer{
+text-align:center;
+padding:60px 20px;
+background:#ff4aa0;
+color:white;
+margin-top:40px;
+}
+
+.socials{
+display:flex;
+gap:18px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.socials a{
+text-decoration:none;
+padding:14px 22px;
+border-radius:999px;
+background:#ffe5f2;
+color:#ff4aa0;
+font-weight:700;
+}
+
+.contact-socials{
+display:flex;
+gap:18px;
+margin-top:35px;
+}
+
+.social-circle{
+width:64px;
+height:64px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:1.5rem;
+text-decoration:none;
+color:white;
+transition:.35s;
+box-shadow:0 15px 30px rgba(0,0,0,.12);
+}
+
+.social-circle:hover{
+transform:translateY(-6px) scale(1.06);
+}
+
+.instagram{
+background:linear-gradient(135deg,#ff4aa0,#ff8a5c);
+}
+
+.facebook{
+background:#1877f2;
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.85);
+display:none;
+align-items:center;
+justify-content:center;
+padding:40px;
+z-index:9999;
+}
+
+.modal.active{
+display:flex;
+}
+
+.modal-grid{
+width:100%;
+max-width:1200px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:18px;
+overflow-y:auto;
+max-height:85vh;
+padding-right:8px;
+}
+
+.modal-grid img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:22px;
+display:block;
+}
+
+.close-modal{
+position:absolute;
+top:30px;
+right:30px;
+font-size:3rem;
+color:white;
+cursor:pointer;
+}
+
+.flavours-box{
+max-width:900px;
+margin:50px auto 0;
+text-align:center;
+font-size:1rem;
+font-weight:600;
+line-height:2;
+color:#555;
+}
+
+.flavours-box p{
+margin:0;
+}
+
+.flavours-plus{
+margin:4px 0;
+font-size:1.2rem;
+color:#ff4aa0;
+}
+
+.price-note{
+margin-top:20px !important;
+}
+
+.weekend-banner{
+padding:60px 7% 10px;
+}
+
+.weekend-banner img{
+width:100%;
+max-width:850px;
+margin:0 auto;
+display:block;
+border-radius:40px;
+box-shadow:0 20px 50px rgba(0,0,0,.10);
+}
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.9s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.hero-content,
+.hero-image{
+opacity:0;
+transform:translateY(30px);
+animation:heroFade 1.2s ease forwards;
+}
+
+.hero-image{
+animation-delay:.3s;
+}
+
+@keyframes heroFade{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.sr-only{
+position:absolute;
+width:1px;
+height:1px;
+padding:0;
+margin:-1px;
+overflow:hidden;
+clip:rect(0,0,0,0);
+white-space:nowrap;
+border:0;
+}
+
+.title-image{
+display:block;
+max-width:700px;
+width:100%;
+margin:20px auto 0;
+}
+
+.contact-title-image{
+max-width:500px;
+}
+
+@media(max-width:991px){
+.hero,
+.about,
+.contact-wrapper{
+grid-template-columns:1fr;
+display:grid;
+}
+
+.hero-content h1{
+font-size:3.8rem;
+}
+
+.section-title h2{
+font-size:2.7rem;
+}
+
+.nav-links{
+display:none;
+}
+
+.nav-extra i{
+font-size:1rem;
+}
+
+
+.offer-row{
+grid-template-columns:1fr;
+gap:40px;
+}
+
+.offer-row.reverse{
+direction:ltr;
+}
+
+.offer-text h3{
+font-size:2rem;
+}
+}
+
+@media(max-width:600px){
+section{
+padding:90px 6%;
+}
+
+.hero-content h1{
+font-size:3rem;
+}
+
+.about-card,
+.contact-info,
+.contact-form{
+padding:35px;
+}
+
+.gallery-category{
+height:380px;
+}
+
+.service-gallery{
+grid-template-columns:1fr;
+}
+
+.service-gallery img{
+height:260px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="floating-shape shape1"></div>
+<div class="floating-shape shape2"></div>
+
+<nav class="navbar">
+<a href="#home" class="logo">
+<img src="logo.jpg" alt="logo">
+<span>Cukrářství Mazzetti</span>
+</a>
+
+<div class="nav-right">
+
+<div class="nav-links">
+<a href="#home">Domů</a>
+<a href="#about">O mně</a>
+<a href="#gallery">Nabídka</a>
+<a href="#reviews">Recenze</a>
+<a href="#contact">Kontakt</a>
+</div>
+
+<div class="nav-extra">
+<a href="tel:+420773945917" class="nav-phone">+420 773 945 917</a>
+
+<a href="https://www.facebook.com/cukrarstvi.mazzetti0/" target="_blank">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com/dorty.od.sandry/" target="_blank">
+<i class="fa-brands fa-instagram"></i>
+</a>
+</div>
+
+</div>
+</nav>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>Sladké momenty, na které se nezapomíná.</h1>
+<p>
+Ráda splním veškerá vaše sladká přání. Každý dort, zákusek i dezert vzniká z kvalitních surovin, s láskou a radostí z poctivé cukrářské práce.
+</p>
+
+<div class="hero-buttons">
+<a href="#gallery" class="btn btn-primary">Vybrat si z nabídky</a>
+<a href="#contact" class="btn btn-secondary">Objednat dort</a>
+</div>
+</div>
+
+<div class="hero-image">
+<img src="dortpozadi.png" alt="hero">
+
+
+<div class="floating-photo float2">
+<img src="logokulate.png" alt="">
+</div>
+</div>
+</section>
+
+<section id="about" class="reveal">
+<div class="section-title">
+<span>Něco málo o mně</span>
+
+<h2 class="sr-only">
+Poctivá cukrářská výroba s láskou
+</h2>
+
+<img src="o-me.png" alt="Poctivá cukrářská výroba s láskou" class="title-image">
+</div>
+
+<div class="about">
+<div class="about-image">
+<img src="ditedort5.jpeg" alt="Sandra Mazzetti">
+</div>
+
+<div class="about-card">
+<h3>Jmenuji se Sandra</h3>
+<p>
+Věnuji se poctivé domácí cukrářské výrobě a s radostí tvořím sladké dobroty pro malé i velké oslavy.
+
+Každý dort připravuji individuálně podle přání zákazníků a dbám nejen na vzhled, ale hlavně na skvělou chuť a kvalitní suroviny.
+</p>
+<br>
+<p>
+Ať už jde o narozeniny, svatbu, dětskou oslavu nebo víkendové zákusky, mým cílem je vytvořit sladký zážitek, na který se nezapomíná.
+</p>
+</div>
+</div>
+</section>
+
+
+<section id="gallery" class="reveal">
+<div class="section-title">
+<span>Sladká nabídka</span>
+
+<h2 class="sr-only">
+Co pro Vás ráda připravím
+</h2>
+
+<img src="nabidka.png" alt="Co pro Vás ráda připravím" class="title-image">
+
+<div class="gallery-note">
+Dorty pro jakékoli příležitosti, zákusky klasické i v mini verzi, koláčky, kompletace výslužek, vánoční cukroví, zdobené perníčky/sušenky, modelované květiny
+</div>
+</div>
+
+<div class="gallery-showcase">
+<div class="gallery-category" onclick="openGallery('kids')">
+<img src="detskydort4.png" alt="">
+<div class="gallery-overlay">
+<h3>Dětské dorty</h3>
+<p>Hravá fantazie plná barev, postaviček a radosti.</p>
+</div>
+</div>
+
+<div class="gallery-category" onclick="openGallery('classic')">
+<img src="dort4.png" alt="">
+<div class="gallery-overlay">
+<h3>Narozeninové dorty</h3>
+<p>Elegantní i moderní dorty pro každou oslavu.</p>
+</div>
+</div>
+
+<div class="gallery-category" onclick="openGallery('wedding')">
+<img src="svatebnidort1.png" alt="">
+<div class="gallery-overlay">
+<h3>Svatební dorty</h3>
+<p>Luxusní sladká tečka vašeho výjimečného dne.</p>
+</div>
+</div>
+
+<div class="gallery-category" onclick="openGallery('desserts')">
+<img src="zakusky4.png" alt="">
+
+<div class="gallery-overlay">
+<h3>Zákusky</h3>
+<p>Poctivé domácí dezerty, sladké dobroty, vánoční cukroví.</p>
+</div>
+</div>
+
+<div class="gallery-category" onclick="openGallery('cookies')">
+<img src="susenky1.png" alt="">
+
+<div class="gallery-overlay">
+<h3>Zdobené sušenky</h3>
+<p>Ručně zdobené sušenky a perníčky christmas pro oslavy, dárky i sladké potěšení.</p>
+</div>
+</div>
+
+<div class="gallery-category" onclick="openGallery('flowers')">
+<img src="kvetiny1.png" alt="">
+
+<div class="gallery-overlay">
+<h3>Modelované květiny</h3>
+<p>Jemné ručně modelované květiny pro elegantní a luxusní dorty.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<div class="flavours-box reveal">
+<p>
+Výběr příchutí: Čokoládový dort s pařížskou šlehačkou a malinami, Vanilkový dort s mascarpone krémem a čerstvým ovocem, Mrkvový dort, Redvelvet dort, Karamelový dort, Pistáciový dort, Mechový dortík, Sachr dort
+</p>
+
+<div class="flavours-plus">
+<i class="fa-solid fa-plus"></i>
+</div>
+
+<p>
+jakékoli ovocné příchutě krémů
+</p>
+
+<p class="price-note">
+Ceny dortů se odvíjí od velikosti(počet porcí) , náročnosti (vzhledu) a příchutě. Vždy je cena individuální.
+</p>
+</div>
+
+<section class="weekend-banner reveal">
+<a href="https://www.facebook.com/cukrarstvi.mazzetti0/" target="_blank">
+<img src="banner-vikend.png" alt="Víkendová nabídka zákusků">
+</a>
+</section>
+
+<section id="reviews" class="reveal">
+<div class="section-title">
+<span>Spokojení zákazníci</span>
+
+<h2 class="sr-only">
+Radost z každého detailu
+</h2>
+
+<img src="recenze.png" alt="Radost z každého detailu" class="title-image">
+</div>
+
+<div class="emotion-section">
+<div class="emotion-slider">
+
+<button class="slider-btn prev" onclick="changeSlide(-1)">
+❮
+</button>
+
+<div class="slider-track">
+<img src="ditedort1.png" class="slide active" alt="">
+<img src="ditedort2.png" class="slide" alt="">
+<img src="ditedort3.png" class="slide" alt="">
+<img src="ditedort4.png" class="slide" alt="">
+</div>
+
+<button class="slider-btn next" onclick="changeSlide(1)">
+❯
+</button>
+
+</div>
+
+<div>
+<div class="review-card">
+<h4>★★★★★ Pavlína P.</h4>
+<p>„Ráda bych poděkovala paní Sandře za úžasný svatební dort a vynikající minidezerty i koláčky. Je velice ochotná, jednání s ní bylo ukázkové a příjemné. Stačila jen jedna fotka a Sandra vykouzlila svatební dort přesně podle mých představ. Všem moc chutnalo. Určitě na 100% doporučuji!“</p>
+</div>
+
+<div class="review-card">
+<h4>★★★★★ Veronika P.</h4>
+<p>„Již podruhé jsme se stavili pro dortíky s sebou a opět naprostá spokojenost! Skvělé ceny a ještě lepší pochutiny :) Jedině doporučuji!“</p>
+</div>
+
+<div class="review-card">
+<h4>★★★★★ Michaela M.</h4>
+<p>„Objednávali jsme si svatební koláčky a minizákusky na svatbu. Vše bylo naprosto perfektní. Přístup paní Mazzetti byl taky úžasný, po domluvě nám objednala i krabičky na výslužky a vše přichystala. Vše bylo naprosto perfektní. Rozhodně doporučuji. Budu všude chválit. A myslím, že nejen já. Moc Vám za všechno děkuji.“</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="reveal">
+<div class="section-title">
+<span>Kontaktujte mě</span>
+
+<h2 class="sr-only">
+Máte vysněný dort?
+</h2>
+
+<img src="kontakt.png" alt="Máte vysněný dort?" class="title-image contact-title-image">
+</div>
+
+<div class="contact-wrapper">
+<div class="contact-info">
+<div class="contact-item">
+<h4>Adresa</h4>
+<p>
+<a href="https://maps.google.com/?q=Cukrářství+MAZZETTI+Netvořice" target="_blank">
+Pražská 302, 257 44 Netvořice
+</a>
+</p>
+</div>
+
+<div class="contact-item">
+<h4>Telefon</h4>
+<p>
+<a href="tel:+420773945917">+420 773 945 917</a>
+</p>
+</div>
+
+<div class="contact-item">
+<h4>Email</h4>
+<p>
+<a href="mailto:sandra.mazzetti@seznam.cz">
+sandra.mazzetti@seznam.cz
+</a>
+</p>
+</div>
+
+<div class="contact-item">
+<h4>Otevírací doba</h4>
+<p>
+Pá–So: 9:00–17:00<br>
+Ne: 9:00–16:00
+</p>
+</div>
+
+<div class="contact-socials">
+
+<a href="https://www.instagram.com/dorty.od.sandry/" target="_blank" class="social-circle instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="https://www.facebook.com/cukrarstvi.mazzetti0/" target="_blank" class="social-circle facebook">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+
+</div>
+</div>
+
+
+<form class="contact-form">
+
+<h4>Napište mi a společně vytvoříme sladký zážitek</h4>
+
+<input type="text" placeholder="Vaše jméno">
+<input type="email" placeholder="Email">
+<input type="text" placeholder="Telefon">
+<textarea placeholder="Napište mi svoji představu"></textarea>
+<button class="btn btn-primary submit-btn" type="submit">
+Odeslat zprávu
+</button>
+</form>
+</div>
+</section>
+
+<footer class="footer">
+<p>© 2026 Cukrářství Mazzetti • Vytvořeno s láskou</p>
+</footer>
+
+<div class="modal" id="galleryModal">
+<div class="close-modal" onclick="closeGallery()">×</div>
+<div class="modal-grid" id="modalGrid"></div>
+</div>
+
+<script>
+const galleries = {
+kids:[
+'detskydort1.png',
+'detskydort2.png',
+'detskydort3.png',
+'detskydort4.png',
+'detskydort5.png',
+'detskydort6.png',
+'detskydort7.png',
+'detskydort8.png'
+],
+classic:[
+'dort1.png',
+'dort2.png',
+'dort3.png',
+'dort4.png',
+'dort5.png',
+'dort6.png',
+'dort7.png',
+'dort8.png'
+],
+wedding:[
+'svatebnidort1.png',
+'svatebnidort2.png',
+'svatebnidort3.webp',
+'svatebnidort4.jpg',
+'svatebnidort5.png',
+'svatebnidort6.jpg',
+'svatebnidort7.png',
+'svatebnidort8.png'
+],
+desserts:[
+'zakusky1.png',
+'zakusky2.png',
+'zakusky3.png',
+'zakusky4.png',
+'zakusky5.png',
+'zakusky6.jpg',
+'zakusky7.png',
+'zakusky8.jpeg'
+],
+cookies:[
+'susenky1.png',
+'susenky2.jpeg',
+'susenky3.jpeg',
+'susenky4.jpeg'
+],
+flowers:[
+'kvetiny1.png',
+'kvetiny2.png',
+'kvetiny3.png',
+'kvetiny4.png',
+'kvetiny5.png',
+'kvetiny6.png',
+'kvetiny7.png',
+'kvetiny8.png'
+],
+};
+
+function openGallery(type){
+const modal = document.getElementById('galleryModal');
+const grid = document.getElementById('modalGrid');
+
+grid.innerHTML='';
+
+galleries[type].forEach(img=>{
+const image = document.createElement('img');
+image.src = img;
+grid.appendChild(image);
+});
+
+modal.classList.add('active');
+document.body.style.overflow='hidden';
+}
+
+function closeGallery(){
+document.getElementById('galleryModal').classList.remove('active');
+document.body.style.overflow='auto';
+}
+
+window.addEventListener('click',e=>{
+const modal = document.getElementById('galleryModal');
+if(e.target === modal){
+closeGallery();
+}
+});
+
+let currentSlide = 0;
+
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(index){
+
+slides.forEach(slide=>{
+slide.classList.remove('active');
+});
+
+if(index >= slides.length){
+currentSlide = 0;
+}
+
+else if(index < 0){
+currentSlide = slides.length - 1;
+}
+
+slides[currentSlide].classList.add('active');
+}
+
+function changeSlide(direction){
+currentSlide += direction;
+showSlide(currentSlide);
+}
+
+let startX = 0;
+
+const slider = document.querySelector('.slider-track');
+
+slider.addEventListener('touchstart',e=>{
+startX = e.touches[0].clientX;
+});
+
+slider.addEventListener('touchend',e=>{
+let endX = e.changedTouches[0].clientX;
+
+if(startX - endX > 50){
+changeSlide(1);
+}
+
+if(endX - startX > 50){
+changeSlide(-1);
+}
+});
+
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+reveals.forEach(element=>{
+const windowHeight = window.innerHeight;
+const revealTop = element.getBoundingClientRect().top;
+const revealPoint = 120;
+
+if(revealTop < windowHeight - revealPoint){
+element.classList.add('active');
+}
+});
+}
+
+window.addEventListener('scroll', revealOnScroll);
+
+revealOnScroll();
+</script>
+
+</body>
+</html>
+
