@@ -1010,27 +1010,54 @@ width:100%;
 /* HERO */
 
 .hero{
+position:relative;
 display:flex;
 flex-direction:column;
-gap:30px;
-padding-top:120px;
+justify-content:center;
+align-items:center;
 text-align:center;
-min-height:auto;
+min-height:88vh;
+padding:140px 24px 80px;
+overflow:hidden;
+}
+
+  .hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:url('dortpozadi.png') center center/cover no-repeat;
+z-index:-2;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(255,255,255,.72);
+backdrop-filter:blur(2px);
+z-index:-1;
 }
 
 .hero-content h1{
-font-size:2.9rem;
-line-height:1.05;
+font-size:3.2rem;
+line-height:1;
+margin-bottom:22px;
 }
 
 .hero-content p{
-font-size:1rem;
+font-size:1.05rem;
 margin:auto auto 28px;
+max-width:340px;
+}
+
+  .hero-content{
+max-width:420px;
 }
 
 .hero-buttons{
 justify-content:center;
 flex-direction:column;
+margin-top:10px;
 }
 
 .btn{
@@ -1040,9 +1067,8 @@ width:100%;
 text-align:center;
 }
 
-.hero-image img{
-transform:none;
-border-radius:28px;
+.hero-image{
+display:none;
 }
 
 .floating-photo{
