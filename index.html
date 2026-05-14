@@ -1338,7 +1338,7 @@ Poctivá cukrářská výroba s láskou
 
 <div class="about">
 <div class="about-image">
-<img src="ditedort5.jpeg" alt="Sandra Mazzetti">
+<img src="ditedort5.jpeg" alt="Sandra Mazzetti" loading="lazy">
 </div>
 
 <div class="about-card">
@@ -1374,7 +1374,7 @@ Dorty pro jakékoli příležitosti, zákusky klasické i v mini verzi, koláčk
 
 <div class="gallery-showcase">
 <div class="gallery-category" onclick="openGallery('kids')">
-<img src="detskydort4.png" alt="">
+<img src="detskydort4.png" alt="" loading="lazy">
 <div class="gallery-overlay">
 <h3>Dětské dorty</h3>
 <p>Hravá fantazie plná barev, postaviček a radosti.</p>
@@ -1382,7 +1382,7 @@ Dorty pro jakékoli příležitosti, zákusky klasické i v mini verzi, koláčk
 </div>
 
 <div class="gallery-category" onclick="openGallery('classic')">
-<img src="dort4.png" alt="">
+<img src="dort4.png" alt="" loading="lazy">
 <div class="gallery-overlay">
 <h3>Narozeninové dorty</h3>
 <p>Elegantní i moderní dorty pro každou oslavu.</p>
@@ -1390,7 +1390,7 @@ Dorty pro jakékoli příležitosti, zákusky klasické i v mini verzi, koláčk
 </div>
 
 <div class="gallery-category" onclick="openGallery('wedding')">
-<img src="svatebnidort1.png" alt="">
+<img src="svatebnidort1.png" alt="" loading="lazy">
 <div class="gallery-overlay">
 <h3>Svatební dorty</h3>
 <p>Luxusní sladká tečka vašeho výjimečného dne.</p>
@@ -1398,7 +1398,7 @@ Dorty pro jakékoli příležitosti, zákusky klasické i v mini verzi, koláčk
 </div>
 
 <div class="gallery-category" onclick="openGallery('desserts')">
-<img src="zakusky4.png" alt="">
+<img src="zakusky4.png" alt="" loading="lazy">
 
 <div class="gallery-overlay">
 <h3>Zákusky</h3>
@@ -1407,7 +1407,7 @@ Dorty pro jakékoli příležitosti, zákusky klasické i v mini verzi, koláčk
 </div>
 
 <div class="gallery-category" onclick="openGallery('cookies')">
-<img src="susenky1.png" alt="">
+<img src="susenky1.png" alt="" loading="lazy">
 
 <div class="gallery-overlay">
 <h3>Zdobené sušenky</h3>
@@ -1416,7 +1416,7 @@ Dorty pro jakékoli příležitosti, zákusky klasické i v mini verzi, koláčk
 </div>
 
 <div class="gallery-category" onclick="openGallery('flowers')">
-<img src="kvetiny1.png" alt="">
+<img src="kvetiny1.png" alt="" loading="lazy">
 
 <div class="gallery-overlay">
 <h3>Modelované květiny</h3>
@@ -1448,7 +1448,7 @@ Ceny dortů se odvíjí od velikosti(počet porcí) , náročnosti (vzhledu) a p
 
 <section class="weekend-banner reveal">
 <a href="https://www.facebook.com/cukrarstvi.mazzetti0/" target="_blank">
-<img src="banner-vikend.png" alt="Víkendová nabídka zákusků">
+<img src="banner-vikend.png" alt="Víkendová nabídka zákusků" loading="lazy">
 </a>
 </section>
 
@@ -1472,9 +1472,9 @@ Radost z každého detailu
 
 <div class="slider-track">
 <img src="ditedort1.png" class="slide active" alt="">
-<img src="ditedort2.png" class="slide" alt="">
-<img src="ditedort3.png" class="slide" alt="">
-<img src="ditedort4.png" class="slide" alt="">
+<img src="ditedort2.png" class="slide" alt="" loading="lazy">
+<img src="ditedort3.png" class="slide" alt="" loading="lazy">
+<img src="ditedort4.png" class="slide" alt="" loading="lazy">
 </div>
 
 <button class="slider-btn next" onclick="changeSlide(1)">
@@ -1712,6 +1712,7 @@ grid.innerHTML='';
 galleries[type].forEach(img=>{
 const image = document.createElement('img');
 image.src = img;
+image.loading = 'lazy';
 grid.appendChild(image);
 });
 
