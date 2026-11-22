@@ -834,22 +834,27 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* HERO – rychlejší animace bez skrývání obsahu */
+
 .hero-content,
 .hero-image{
-opacity:0;
-transform:translateY(30px);
-animation:heroFade 1.2s ease forwards;
+  opacity:1;
+  transform:translateY(0);
+  animation:heroEntrance .55s ease-out both;
 }
 
 .hero-image{
-animation-delay:.3s;
+  animation-delay:.15s;
 }
 
-@keyframes heroFade{
-to{
-opacity:1;
-transform:translateY(0);
-}
+@keyframes heroEntrance{
+  from{
+    transform:translateY(18px);
+  }
+
+  to{
+    transform:translateY(0);
+  }
 }
 
 .sr-only{
