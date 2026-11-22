@@ -2023,21 +2023,21 @@ changeSlide(-1);
 
 const reveals = document.querySelectorAll('.reveal');
 
-function revealOnScroll(){
-reveals.forEach(element=>{
-const windowHeight = window.innerHeight;
-const revealTop = element.getBoundingClientRect().top;
-const revealPoint = 120;
-
-if(revealTop < windowHeight - revealPoint){
-element.classList.add('active');
-}
+const revealObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  rootMargin: '0px 0px -120px 0px',
+  threshold: 0
 });
-}
 
-window.addEventListener('scroll', revealOnScroll);
-
-revealOnScroll();
+reveals.forEach(element => {
+  revealObserver.observe(element);
+});
 
 function toggleMenu(){
 
